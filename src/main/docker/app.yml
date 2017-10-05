@@ -1,0 +1,14 @@
+version: '2'
+services:
+    jhipstersampleapplicationwithshopify-app:
+        image: jhipstersampleapplicationwithshopify
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:mysql://jhipstersampleapplicationwithshopify-mysql:3306/jhipstersampleapplicationwithshopify?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    jhipstersampleapplicationwithshopify-mysql:
+        extends:
+            file: mysql.yml
+            service: jhipstersampleapplicationwithshopify-mysql
